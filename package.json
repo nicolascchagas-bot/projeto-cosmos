@@ -1,0 +1,7 @@
+{
+  "name": "cosmos-em-formacao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Uma viagem interativa para aprender astronomia",
+  "scripts": { "start": "node server.js" }
+}

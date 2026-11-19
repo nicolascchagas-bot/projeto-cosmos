@@ -1,0 +1,137 @@
+/* Accessibility, small-screen refinements, and a lightweight glossary. */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid #e6c6ff;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px #8f58bb66;
+}
+.skip-link {
+  position: fixed;
+  z-index: 120;
+  top: 10px;
+  left: 10px;
+  padding: 12px 16px;
+  color: #170f25;
+  background: #e6c6ff;
+  border-radius: 8px;
+  font-weight: 700;
+  transform: translateY(-160%);
+}
+.skip-link:focus { transform: translateY(0); }
+.mobile-menu-toggle { display: none; }
+.progress { pointer-events: none; }
+.earth-story { height: 600vh; }
+.section-index, .hero-label, .stage-caption, .earth-counter small,
+.address > span, .address i, .card-no, .card-tag, .planet-count,
+.phase-name, .finale small { color: #b3a5c6; }
+.glossary {
+  margin: 50px 0 0;
+  padding: 0;
+  border: 1px solid #59456e;
+  border-radius: 12px;
+  background: #1a1227;
+  color: #e9def8;
+}
+.glossary summary {
+  min-height: 52px;
+  padding: 16px 20px;
+  cursor: pointer;
+  color: #d5b8ff;
+  font: 600 14px/1.4 var(--sans);
+}
+.glossary summary::marker { color: #c99cff; }
+.glossary-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 24px;
+  padding: 4px 20px 20px;
+}
+.glossary-content p { margin: 0; color: #c4b8d3; font-size: 13px; line-height: 1.7; }
+.glossary-content strong { color: #f3e8ff; }
+.planet-button, .address, .answer { min-height: 44px; }
+.planet-button[aria-pressed="true"] { color: #fff; }
+.earth-counter[role="progressbar"] { position: relative; }
+.earth-counter[role="progressbar"]::after {
+  content: attr(aria-valuetext);
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.hero-art .planet {
+  background: radial-gradient(circle at 34% 30%, #e8baff 0, #c77aee 14%, #9954c5 48%, #75469a 78%, #603d7f 100%);
+  box-shadow: inset -14px -12px 28px #49315c55, inset 10px 10px 26px #f0caff30, 0 0 90px #a866cf2b;
+}
+.hero-art .planet::after { background: linear-gradient(135deg, transparent 42%, #291b3e55 100%); }
+#sound { display: none !important; }
+@media (max-width: 800px) {
+  .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 64px;
+    min-height: 44px;
+    padding: 0 13px;
+    border: 1px solid #71578d;
+    border-radius: 999px;
+    background: #1a1128;
+    color: #e4d5f7;
+    font: 12px var(--sans);
+    cursor: pointer;
+  }
+  .topbar nav.open {
+    display: flex;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 5%;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 190px;
+    padding: 10px;
+    border: 1px solid #59456e;
+    border-radius: 12px;
+    background: #170f25;
+    box-shadow: 0 12px 35px #0008;
+  }
+  .topbar nav.open a { min-height: 44px; padding: 12px; }
+  .hero-art { opacity: .55; }
+  .earth-story { height: 600vh; }
+  .earth-sticky { min-height: 100svh; }
+  .earth-stage { width: min(84vw, 500px) !important; right: -12% !important; opacity: .72; }
+  .earth-story.reading .earth-stage { opacity: .54 !important; }
+  .earth-copy { width: min(78%, 370px); }
+  .earth-copy h2 { font-size: clamp(44px, 10vw, 58px); }
+  .earth-story.reading .earth-steps article { width: 74% !important; margin-left: 7% !important; padding: 18vh 0 0 !important; min-height: 100svh; }
+  .earth-steps article.active { opacity: 1; }
+  .address { min-height: 58px; }
+  .planet-button { min-height: 54px; }
+}
+@media (max-width: 480px) {
+  .hero { min-height: 740px; padding-bottom: 70px; }
+  .hero h1 { font-size: clamp(42px, 12vw, 56px); line-height: 1.05; }
+  .hero-art { width: 80vw; height: 80vw; min-height: 0; right: -16%; top: 68%; opacity: .46; }
+  .hero-copy { position: relative; z-index: 2; }
+  .hero-text { max-width: 34ch; }
+  .earth-sticky { min-height: 100svh; padding: 18% 7%; }
+  .earth-copy { width: 86%; margin-top: 6vh; }
+  .earth-copy > p { max-width: 30ch; }
+  .earth-stage { width: 72vw !important; right: -5% !important; top: 72% !important; opacity: .48; }
+  .earth-stage .stage-caption { left: 4% !important; right: auto !important; top: 4% !important; bottom: auto !important; width: 86%; text-align: center; white-space: normal; font-size: 8px; }
+  .earth-footnote { left: 5% !important; right: 5% !important; bottom: 3% !important; text-align: center; font-size: 9px !important; line-height: 1.4; color: #b6a8c8; }
+  .earth-story.reading .earth-steps article { width: 86% !important; margin-left: 7% !important; min-height: 100svh; padding: 12vh 7% 0 0 !important; }
+  .earth-steps article h3 { font-size: 27px; }
+  .earth-footnote { max-width: 58%; font-size: 8px; }
+  .glossary-content { grid-template-columns: 1fr; gap: 10px; }
+  .address { grid-template-columns: 34px 1fr 24px; }
+  .address b { font-size: 17px; }
+  .address i { grid-column: 2; grid-row: 2; line-height: 1.5; }
+  .address strong { grid-column: 3; grid-row: 1 / 3; }
+  .planet-fact { min-height: 98px; }
+  .moon-orbit { transform: scale(.88); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .hero-art .planet { animation: none !important; }
+}
